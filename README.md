@@ -80,7 +80,7 @@ Now this docker runs even if ctrl +c is used. It only stops only when stop comma
 
 ```docker commit <container id> <repo_name/image_name:version>``` :convert running container to an image
 
-```docker commit 90173b88eb2c lux/apache-test:1.0```
+```docker commit 90173b88eb2c repo/first-test:1.0```
 
 ```docker images``` : show images
 
@@ -92,7 +92,7 @@ Entry point - what command should we run when we start a docker container.
 
 So recreate the image: 
 
-```docker commit --change='ENTRYPOINT ["apachectl", "-DFOREGROUND"]' <ID> lltv/apache-test:1.1```
+```docker commit --change='ENTRYPOINT ["apachectl", "-DFOREGROUND"]' <ID> repo/first-test:1.1```
 
 ## Creating a container image from a Dockerfile
 
@@ -123,9 +123,9 @@ Save the following code into a text file, named “Dockerfile”:
 
 The following command will build a new container image, with our Dockerfile. Take note of the incremented version number, and also the period at the end. It must be run from the same location that contains the Dockerfile.
 
-```docker build -t lltv/apache:1.2 .```
+```docker build -t repo/first-test:1.2 .```
 
-```docker build -t lltv/apache-test:1.2 .```
+```docker build -t repo/first-test:1.2 .```
 
 Remove docker image: ```docker rmi <image_id>```
 

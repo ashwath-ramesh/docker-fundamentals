@@ -12,7 +12,7 @@
 
 ```sudo docker run hello-world``` - test that the install docker works. This checks local docker for this container, and if not found, pulls the image and runs it.
 
-```sudo usermod -aG docker ash``` - Make sure we don’t need sudo to run. Logout and login. Reboot if needed.
+```sudo usermod -aG docker tom``` - Make sure we don’t need sudo to run. Logout and login. Reboot if needed.
 
 ## Running containers
 

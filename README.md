@@ -62,7 +62,7 @@ Paste ```111.111.11.11:8080``` on browser
 
 ```docker stop <container id>```: stops and terminates docker container
 
-```docker run -it -d - -restart unless-stopped -p 8080:80 nginx``````
+```docker run -it -d - -restart unless-stopped -p 8080:80 nginx```
 
 Now this docker runs even if ctrl +c is used. It only stops only when stop command is used.
 

@@ -2,7 +2,7 @@
 
 - [Quick start](quick_start.md)
 - [Creating and using containers](creating_and_using_containers.md)
-- Container images
+- [Container images](container_images.md)
 - Persistent data
 - Docker compose
 - Swarm

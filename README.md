@@ -1,9 +1,9 @@
 # Fundamentals of Docker
 
 - [Quick start](quick_start.md)
-- [Creating and using containers](creating_and_using_containers.md)
-- [Container images](container_images.md)
-- Persistent data
+- [Creating and using containers](containers.md)
+- [Container images](images.md)
+- [Persistent data](data.md)
 - Docker compose
 - Swarm
 - Container registries

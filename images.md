@@ -30,6 +30,10 @@
 
    4.4. [Extending Official Images](#44-extending-official-images)
 
+5. [Image Cleanup and Maintenance](#5-image-cleanup-and-maintenance)
+
+   5.1. [Pruning Commands](#51-pruning-commands)
+
 ## 1. Docker Hub Registry Images
 
 ### 1.1 Using Docker Hub
@@ -118,32 +122,20 @@
 | `docker container run -p 80:80 --rm nginx`           | Runs official nginx image |
 | `docker container run -p 80:80 --rm nginx-with-html` | Runs custom nginx image   |
 
----
+## 5. Image Cleanup and Maintenance
 
-## Assignment Answers: Build Your Own Dockerfile and Run Containers From It
+### 5.1 Pruning Commands
 
-cd dockerfile-assignment-1
+#### Examples:
 
-vim Dockerfile
+| Command                  | Description                                         |
+| ------------------------ | --------------------------------------------------- |
+| `docker system df`       | Shows Docker disk usage                             |
+| `docker image prune`     | Removes dangling images                             |
+| `docker image prune -a`  | Removes all unused images                           |
+| `docker system prune`    | Removes all unused containers, networks, and images |
+| `docker system prune -a` | Removes all unused resources including build cache  |
 
-docker build cmd
+**Note**: Use `-f` or `--force` flag with prune commands to skip confirmation prompt.
 
-docker build -t testnode .
-
-docker container run --rm -p 80:3000 testnode
-
-docker images
-
-docker tag --help
-
-docker tag testnode bretfisher/testing-node
-
-docker push --help
-
-docker push bretfisher/testing-node
-
-docker image ls
-
-docker image rm bretfisher/testing-node
-
-docker container run --rm -p 80:3000 bretfisher/testing-node
+**Warning**: Be careful with `prune -a` commands as they remove all unused resources, which might be needed later.

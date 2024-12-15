@@ -119,10 +119,13 @@ VOLUME /var/lib/mysql
 
 #### Examples:
 
-| Command                                                                                                     | Description                         |
-| ----------------------------------------------------------------------------------------------------------- | ----------------------------------- |
-| `docker container run -d --name mysql -e MYSQL_ALLOW_EMPTY_PASSWORD=True -v mysql-db:/var/lib/mysql mysql`  | Creates container with named volume |
-| `docker container run -d --name mysql3 -e MYSQL_ALLOW_EMPTY_PASSWORD=True -v mysql-db:/var/lib/mysql mysql` | Reuses existing named volume        |
+| Command                                                                                                                                                | Description                                 |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------- |
+| `docker container run -d --name mysql -e MYSQL_ALLOW_EMPTY_PASSWORD=True -v mysql-db:/var/lib/mysql mysql`                                             | Creates container with named volume         |
+| `docker container run -d --name mysql3 -e MYSQL_ALLOW_EMPTY_PASSWORD=True -v mysql-db:/var/lib/mysql mysql`                                            | Reuses existing named volume                |
+| `docker container run -d --name postgres -e POSTGRES_PASSWORD=mysecretpassword -v postgres-db:/var/lib/postgresql/data postgres`                       | Creates container with named volume         |
+| `docker container run -d --name postgres2 -e POSTGRES_PASSWORD=mysecretpassword -v postgres-db:/var/lib/postgresql/data postgres:15.4`                 | Reuses volume with specific version         |
+| `docker container run -d --name postgres3 -e POSTGRES_PASSWORD=mysecretpassword -e POSTGRES_DB=myapp -v postgres-db:/var/lib/postgresql/data postgres` | Creates container with custom database name |
 
 ### 2.3 Volume Commands
 
@@ -173,20 +176,15 @@ Best Practices:
 - Always backup important data volumes
 - Use volume drivers for cloud storage when needed
 
----
+### PostgreSQL Docker Image Notes
 
-For docker run, and the forthcoming Docker Compose sections, you need to either set a password with the environment variable:
+- **Authentication Options:**
 
-POSTGRES_PASSWORD=mypasswd
+  - Set password: `POSTGRES_PASSWORD=mypasswd`
+  - Disable password: `POSTGRES_HOST_AUTH_METHOD=trust`
 
-Or tell it to ignore passwords with the environment variable:
+- **Supported Image Versions:**
+  - Old version: `postgres:15.1`
+  - New version: `postgres:15.2`
 
-POSTGRES_HOST_AUTH_METHOD=trust
-
-Note this change was in the Docker Hub image, and not a change in postgres itself.
-
-So, when you see the "old" and "new" versions of the Postgres SQL image in the Assignment video, you can replace them with these versions:
-
-postgres:15.1
-
-postgres:15.2
+Note: Authentication changes were made in Docker Hub image, not in PostgreSQL itself.

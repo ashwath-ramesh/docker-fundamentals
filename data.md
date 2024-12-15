@@ -71,6 +71,22 @@ Docker provides two main solutions for persistent data:
 
 #### Dockerfile Configuration:
 
+#### Finding VOLUME in Official Images:
+
+- Check official image repositories on GitHub:
+  - MySQL: https://github.com/docker-library/mysql/blob/master/Dockerfile
+  - PostgreSQL: https://github.com/docker-library/postgres/blob/master/Dockerfile
+
+Example VOLUME declarations:
+
+| Image      | Volume Location                   |
+| ---------- | --------------------------------- |
+| MySQL      | `VOLUME /var/lib/mysql`           |
+| PostgreSQL | `VOLUME /var/lib/postgresql/data` |
+| MongoDB    | `VOLUME /data/db`                 |
+
+**Note**: The VOLUME instruction creates a mount point and marks it for external storage
+
 ```dockerfile
 VOLUME /var/lib/mysql
 ```

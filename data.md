@@ -50,6 +50,26 @@ Docker provides two main solutions for persistent data:
 | Data Volumes | Special location outside container UFS (unique file system) |
 | Bind Mounts  | Direct mapping between container path and host path         |
 
+Docker Storage Types Comparison
+
+| Feature                    | Volumes                                                                                                                 | Bind Mounts                                                                                 |
+| -------------------------- | ----------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------- |
+| **Storage Location**       | Managed by Docker (`/var/lib/docker/volumes/`)                                                                          | Anywhere on host filesystem                                                                 |
+| **Content Population**     | New volume has contents of container image                                                                              | Empty directory in the host                                                                 |
+| **Management**             | Docker CLI commands and APIs                                                                                            | Host filesystem commands                                                                    |
+| **Permissions**            | Can be modified by Docker container processes                                                                           | Can be modified by both host and container processes                                        |
+| **Portability**            | High (easily movable between containers)                                                                                | Low (dependent on host filesystem structure)                                                |
+| **Performance**            | Optimized for container storage                                                                                         | Depends on host filesystem                                                                  |
+| **OS Support**             | Works the same on all platforms                                                                                         | May have issues with file paths between OS                                                  |
+| **Initialization**         | Can be pre-populated with container content                                                                             | Empty by default unless files exist at mount point                                          |
+| **Sharing**                | Can be easily shared between containers                                                                                 | Must be manually shared via host filesystem                                                 |
+| **Backup**                 | Can be backed up using Docker commands                                                                                  | Must be backed up using host filesystem tools                                               |
+| **Best Used For**          | - Production database storage<br>- Application data persistence<br>- Container data sharing<br>- Docker-managed backups | - Local development<br>- Source code mounting<br>- Configuration files<br>- Build artifacts |
+| **Example Command**        | `docker run -v mysql-data:/var/lib/mysql mysql`                                                                         | `docker run -v /home/user/code:/app node`                                                   |
+| **Access from Host**       | Requires Docker commands to access                                                                                      | Direct access through host filesystem                                                       |
+| **Creation in Dockerfile** | Can be declared with VOLUME instruction                                                                                 | Cannot be declared in Dockerfile                                                            |
+| **Runtime Overhead**       | Minimal                                                                                                                 | Slightly higher due to filesystem translation                                               |
+
 ## 2. Data Volumes
 
 ### 2.1 Volume Management

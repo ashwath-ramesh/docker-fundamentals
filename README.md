@@ -4,13 +4,15 @@
 - [Creating and using containers](containers.md)
 - [Container images](images.md)
 - [Persistent data](data.md)
-- Docker compose
+- [Docker compose](compose.md)
 - Swarm
 - Container registries
 - Docker in production
-- Docker security
 - Automated CI workflows
+- GitHub Actions Workflows
 - Github actions
+- Docker security
+- Others
 
 ## Install docker
 

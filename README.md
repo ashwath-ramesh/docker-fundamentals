@@ -5,7 +5,7 @@
 - [Container images](images.md)
 - [Persistent data](data.md)
 - [Docker compose](compose.md)
-- Swarm
+- [Swarm](swarm.md)
 - Container registries
 - Docker in production
 - Automated CI workflows

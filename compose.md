@@ -18,70 +18,53 @@ automation with those YAML files
 
 docker-compose.yml
 
-https://docs.docker.com
+## Components of a docker compose yml file
+
+• `version`: Specifies the Compose file format version (optional in recent versions)
+
+• `services`: Main section defining the containers
+
+- Each service gets a name (e.g. web, db, cache)
+- Contains container configuration like:
+  - image
+  - ports
+  - volumes
+  - environment variables
+  - networks
+  - etc.
+
+• `networks`: Optional section to define custom networks
+
+- Allows configuration of network drivers
+- Can set up network aliases
+- Enables container isolation
+
+• `volumes`: Optional section for persistent data storage
+
+- Named volumes that can be reused
+- Bind mounts to host filesystem
+- Configuration options for volume drivers
 
 ## Trying Out Basic Compose Commands
 
-`docker compose up`
+`docker compose up` - Start containers defined in docker-compose.yml
 
-`docker compose up -d`
+`docker compose up -d` - Start containers in detached (background) mode
 
-`docker compose logs`
+`docker compose down` - Stop and remove containers, networks, and volumes
 
-`docker compose --help`
+`docker compose logs` - View output logs from containers
 
-`docker compose ps`
+`docker compose --help` - Display help and available commands
 
-`docker compose top`
+`docker compose ps` - List running containers in the compose project
 
-`docker compose down`
+`docker compose top` - Display running processes in containers
 
 ## Assignment Answers: Build a Compose File for a Multi-Container Service
-
-docker-compose.yml
-
-docker pull drupal
-
-docker image inspect drupal
-
-docker-compose up
-
-https://hub.docker.com
-
-docker-compose down --help
 
 docker-compose down -v
 
 ## Adding Image Building to Compose Files
 
-docker-compose.yml
-
-docker-compose up
-
-docker-compose up --build
-
-docker-compose down
-
-docker image ls
-
-docker-compose down --help
-
-docker image rm nginx-custom
-
-docker image ls
-
-docker-compose up -d
-
-docker image ls
-
-docker-compose down --help
-
-docker-compose down --rmi local
-
-## Assignment Answers: Compose for Run-Time Image Building and Multi-Container Dev
-
-docker-compose up
-
-docker-compose down
-
-docker-compose up
+Adding Image Building to Compose Files - Enables building custom images directly from Compose rather than pulling pre-built ones

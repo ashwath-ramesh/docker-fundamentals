@@ -19,25 +19,25 @@ Official docs: https://docs.docker.com/engine/swarm/
                                   │
             ┌────────────────────┴─────────────────────┐
             ▼                    ▼                     ▼
-
-  Manager Node 1 Manager Node 2 Worker Node 3
-  │ │ │
-  │ │ │
-  ├─► Service_A ├─► Service_A ├─► Service_A
-  │ │ │ │ │ │
-  │ ├─► Task_1 │ ├─► Task_2 │ ├─► Task_3
-  │ │ (Container) │ │ (Container) │ │ (Container)
-  │ │ │ │ │ │
-  │ │ │
-  ├─► Service_B ├─► Service_B ├─► Service_B
-  │ │ │ │ │ │
-  │ ├─► Task_1 │ ├─► Task_2 │ ├─► Task_3
-  │ │ (Container) │ │ (Container) │ │ (Container)
-  │ ├─► Task_4 │ │ │ │
-  │ │ (Container) │ │ │ │
-  │ │ │
-  └─► Overlay Network └─► Overlay Network └─► Overlay Network
-  (swarm-net) (swarm-net) (swarm-net)
+        Manager Node 1      Manager Node 2        Worker Node 3
+            │                    │                     │
+            │                    │                     │
+            ├─► Service_A ───────┼─► Service_A ────────┼─► Service_A
+            │     │              │     │               │     │
+            │     └─► Task_1     │     └─► Task_2      │     └─► Task_3
+            │         (Container)│         (Container)  │         (Container)
+            │                    │                     │
+            │                    │                     │
+            ├─► Service_B ───────┼─► Service_B ────────┼─► Service_B
+            │     │              │     │               │     │
+            │     ├─► Task_1     │     └─► Task_2      │     └─► Task_3
+            │     │  (Container) │         (Container)  │         (Container)
+            │     │              │                     │
+            │     └─► Task_4     │                     │
+            │         (Container)│                     │
+            │                    │                     │
+            └─► Overlay Network ─┴─► Overlay Network ──┴─► Overlay Network
+                (swarm-net)          (swarm-net)           (swarm-net)
 
 ### Node Management
 
